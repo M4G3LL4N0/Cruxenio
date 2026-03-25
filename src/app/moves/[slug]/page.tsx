@@ -17,7 +17,7 @@ export default async function MoveDetailPage({
     <main className="min-h-screen bg-[#07090d] text-white">
       <div className="mx-auto max-w-4xl px-6 py-16">
         <div className="mb-4 flex flex-wrap gap-2">
-          {move.tags.map((tag: string) => (
+          {move.tags.map((tag: string, index: number) => (
             <span
               key={tag}
               className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50"
