@@ -17,7 +17,7 @@ export default async function MoveDetailPage({
     <main className="min-h-screen bg-[#07090d] text-white">
       <div className="mx-auto max-w-4xl px-6 py-16">
         <div className="mb-4 flex flex-wrap gap-2">
-          {move.tags.map((tag: string, index: number) => (
+          {move.tags.map((tag: string) => (
             <span
               key={tag}
               className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50"
@@ -42,7 +42,7 @@ export default async function MoveDetailPage({
             <h2 className="text-lg font-semibold">Action steps</h2>
             <ol className="mt-4 list-decimal space-y-3 pl-5 text-white/70">
               {move.action_steps.map((step: string, index: number) => (
-                <li key={`${move.id}-${index}`}>{step}</li>
+                <li key={index}>{step}</li>
               ))}
             </ol>
           </section>

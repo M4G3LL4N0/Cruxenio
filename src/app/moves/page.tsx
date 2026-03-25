@@ -22,7 +22,7 @@ export default async function MovesPage() {
         </div>
 
         <div className="grid gap-4">
-          {moves.map((move: MoveRow) => (
+          {moves.map((move) => (
             <MoveCard key={move.id} move={move} />
           ))}
         </div>
