@@ -8,9 +8,7 @@ export type Json =
 
 export interface Database {
   public: {
-    Tables: {
-      waitlist_signups?: never; // Prevent accidental use in public schema
-    };
+    Tables: {};
     Views: Record<string, never>;
     Functions: Record<string, never>;
     Enums: Record<string, never>;
@@ -41,7 +39,7 @@ export interface Database {
           name?: string | null;
           source?: string;
           metadata?: Json;
-          created_at?: string; 
+          created_at?: string;
         };
         Relationships: [];
       };
