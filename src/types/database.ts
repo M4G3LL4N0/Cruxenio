@@ -6,16 +6,9 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
-export interface Database {
+export type Database = {
   public: {
-    Tables: {
-      tables: {
-        Row: never;
-        Insert: never;
-        Update: never;
-        Relationships: never;
-      };
-    };
+    Tables: Record<string, never>;
     Views: Record<string, never>;
     Functions: Record<string, never>;
     Enums: Record<string, never>;
@@ -49,12 +42,6 @@ export interface Database {
           created_at?: string;
         };
         Relationships: [];
-          };
-        };
-        Views: Record<string, never>;
-        Functions: Record<string, never>;
-        Enums: Record<string, never>;
-        CompositeTypes: Record<string, never>;
       };
       moves: {
         Row: {
@@ -107,4 +94,4 @@ export interface Database {
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
   };
-}
+};
