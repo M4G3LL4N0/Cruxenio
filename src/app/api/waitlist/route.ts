@@ -24,8 +24,8 @@ export async function POST(request: Request) {
     };
 
     const { error } = await supabase
-      .from('waitlist_signups')
-      .insert<Database['cruxenio']['Tables']['waitlist_signups']['Insert']>(payload);
+      .from('cruxenio.waitlist_signups')
+      .insert(payload);
 
     if (error && error.code === '23505') {
       return NextResponse.json({ ok: true, duplicate: true });
