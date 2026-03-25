@@ -16,10 +16,10 @@ export async function POST(request: Request) {
 
     const payload: Database['cruxenio']['Tables']['waitlist_signups']['Insert'] = {
       email,
-      name,
+      name: name || null,
       source: 'website',
       metadata: {
-        userAgent: request.headers.get('user-agent')
+        userAgent: request.headers.get('user-agent') || null
       }
     };
 
