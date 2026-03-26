@@ -15,22 +15,35 @@ export default function SubmitPage() {
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
 
+  const [error, setError] = useState('');
+
   async function submit() {
+    if (!form.title.trim() || !form.summary.trim()) {
+      setError('Title and summary are required');
+      return;
+    }
+
+    setError('');
     setLoading(true);
 
-    const res = await fetch('/api/submit-move', {
-      method: 'POST',
-      body: JSON.stringify({
-        ...form,
-        action_steps: form.action_steps.split('\n'),
-        tags: form.tags.split(',')
-      })
-    });
+    try {
+      const res = await fetch('/api/submit-move', {
+        method: 'POST',
+        body: JSON.stringify({
+          ...form,
+          action_steps: form.action_steps.split('\n'),
+          tags: form.tags.split(',').map(t => t.trim()).filter(t => t)
+        })
+      });
 
-    setLoading(false);
-
-    if (res.ok) {
+      if (!res.ok) {
+        throw new Error(await res.text());
+      }
       setDone(true);
+    } catch (err) {
+      setError(err.message || 'Submission failed');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -39,7 +52,12 @@ export default function SubmitPage() {
       <h1 className="text-3xl font-semibold mb-6">Submit a Move</h1>
 
       {done ? (
-        <p className="text-green-400">Submitted. Awaiting approval.</p>
+        <div className="border border-green-500 bg-green-500/10 p-4 rounded">
+          <h3 className="font-medium text-green-400">Submitted for review!</h3>
+          <p className="mt-1 text-green-400/80">
+            Your move will appear publicly after moderator approval.
+          </p>
+        </div>
       ) : (
         <div className="space-y-4">
 

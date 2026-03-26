@@ -15,8 +15,20 @@ export default async function Admin() {
 
       {data?.map((m) => (
         <div key={m.id} className="mb-6 border p-4 rounded">
-          <h2>{m.title}</h2>
-          <p>{m.summary}</p>
+          <div className="flex justify-between items-start">
+            <div>
+              <h2 className="text-xl font-medium">{m.title}</h2>
+              <p className="mt-1 text-white/80">{m.summary}</p>
+            </div>
+            <form action={`/api/approve-move?id=${m.id}`} method="POST">
+              <button
+                type="submit"
+                className="bg-white text-black px-3 py-1 text-sm rounded hover:bg-white/90"
+              >
+                Approve
+              </button>
+            </form>
+          </div>
         </div>
       ))}
     </main>
