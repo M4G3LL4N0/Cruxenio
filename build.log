@@ -1,0 +1,38 @@
+
+> cruxenio@0.1.0 build
+> next build
+
+▲ Next.js 16.2.1 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 4.5s
+  Running TypeScript ...
+  Finished TypeScript in 2.8s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/8) ...
+  Generating static pages using 7 workers (2/8) 
+Failed to initialize Supabase client: Error: supabaseUrl is required.
+    at <unknown> (.next/server/chunks/ssr/src_lib_supabase_server_ts_09lrpry._.js:37:43441)
+    at new cu (.next/server/chunks/ssr/src_lib_supabase_server_ts_09lrpry._.js:37:43692)
+    at <unknown> (.next/server/chunks/ssr/src_lib_supabase_server_ts_09lrpry._.js:37:48122)
+    at e (.next/server/chunks/ssr/[root-of-the-server]__05qdh2g._.js:1:2333)
+    at stringify (<anonymous>)
+  Generating static pages using 7 workers (4/8) 
+  Generating static pages using 7 workers (6/8) 
+✓ Generating static pages using 7 workers (8/8) in 366ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /admin
+├ ƒ /api/submit-move
+├ ƒ /api/waitlist
+├ ƒ /moves
+├ ƒ /moves/[slug]
+└ ○ /submit
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
