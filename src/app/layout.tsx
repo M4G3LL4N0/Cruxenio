@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { createServerSupabaseClient } from '@/lib/supabase/server';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -10,11 +11,18 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Initialize Supabase client
+  const supabase = createServerSupabaseClient();
+  const { error } = await supabase.auth.getSession();
+
+  if (error) {
+    console.error('Supabase initialization error:', error);
+  }
   return (
     <html lang="en">
       <body>
@@ -33,7 +41,19 @@ export default function RootLayout({
           </div>
         </header>
 
-        <div className="page-wrap">{children}</div>
+        <div className="page-wrap">
+          {error ? (
+            <div className="shell">
+              <div className="bg-red-500/20 p-6 rounded-lg border border-red-500/30">
+                <h2 className="text-red-300 font-medium">Database Connection Error</h2>
+                <p className="text-red-400/80 mt-2 text-sm">
+                  We're experiencing some technical difficulties. Please try again later.
+                </p>
+              </div>
+            </div>
+          ) : null}
+          {children}
+        </div>
       </body>
     </html>
   );
