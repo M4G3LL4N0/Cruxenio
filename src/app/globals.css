@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+html {
   color-scheme: dark;
+  scroll-behavior: smooth;
+  background: radial-gradient(ellipse at bottom, #0a0e1a 0%, #07090d 100%);
   --gradient-primary: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
   --gradient-secondary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
