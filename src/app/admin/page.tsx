@@ -1,9 +1,10 @@
 import { createServerSupabaseClient } from '@/lib/supabase/server';
+import { MoveRow } from '@/lib/moves';
 
 export default async function Admin() {
   const supabase = createServerSupabaseClient();
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .schema('cruxenio')
     .from('moves')
     .select('*')
@@ -13,7 +14,12 @@ export default async function Admin() {
     <main className="p-10 text-white">
       <h1 className="text-3xl mb-6">Admin</h1>
 
-      {data?.map((m) => (
+      {error && (
+        <div className="bg-red-500 text-white p-4 rounded mb-6">
+          Error loading drafts: {error.message}
+        </div>
+      )}
+      {data?.map((m: MoveRow) => (
         <div key={m.id} className="mb-6 border p-4 rounded">
           <div className="flex justify-between items-start">
             <div>
