@@ -16,12 +16,27 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Initialize Supabase client
-  const supabase = createServerSupabaseClient();
-  const { error } = await supabase.auth.getSession();
-
-  if (error) {
-    console.error('Supabase initialization error:', error);
+  let error = null;
+  
+  try {
+    // Initialize Supabase client
+    const supabase = createServerSupabaseClient();
+    const { error: authError } = await supabase.auth.getSession();
+    error = authError;
+    
+    // Test schema access
+    const { error: schemaError } = await supabase
+      .schema('cruxenio')
+      .from('moves')
+      .select('*')
+      .limit(1);
+      
+    if (schemaError) {
+      error = schemaError;
+    }
+  } catch (err) {
+    console.error('Supabase initialization error:', err);
+    error = err;
   }
   return (
     <html lang="en">
@@ -47,7 +62,9 @@ export default async function RootLayout({
               <div className="bg-red-500/20 p-6 rounded-lg border border-red-500/30">
                 <h2 className="text-red-300 font-medium">Database Connection Error</h2>
                 <p className="text-red-400/80 mt-2 text-sm">
-                  We're experiencing some technical difficulties. Please try again later.
+                  {error.code === '42501' 
+                    ? 'Database permissions issue detected. Please check your Supabase configuration.'
+                    : 'We\'re experiencing some technical difficulties. Please try again later.'}
                 </p>
               </div>
             </div>
