@@ -1,20 +1,30 @@
 import { notFound } from 'next/navigation';
 import { getMoveBySlug } from '@/lib/moves';
+import { Suspense } from 'react';
+import { MoveDetailSkeleton } from '@/components/move-detail-skeleton';
 
-export default async function MoveDetailPage({
-  params
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const move = await getMoveBySlug(slug);
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
-  if (!move) {
+interface PageProps {
+  params: { slug: string };
+}
+
+export default async function MoveDetailPage({ params }: PageProps) {
+  let move;
+  
+  try {
+    move = await getMoveBySlug(params.slug);
+    if (!move) {
+      notFound();
+    }
+  } catch (error) {
+    console.error('Failed to load move:', error);
     notFound();
   }
 
   return (
-    <main>
+    <Suspense fallback={<MoveDetailSkeleton />}>
       <section className="page-hero">
         <div className="shell">
           <div className="move-meta">
@@ -59,6 +69,6 @@ export default async function MoveDetailPage({
           </div>
         </div>
       </section>
-    </main>
+    </Suspense>
   );
 }
