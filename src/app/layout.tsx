@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   description: 'Learn how to move through life better.'
 };
 
+export const dynamic = 'force-static';
+export const revalidate = 3600;
+
 export default function RootLayout({
   children
 }: Readonly<{
