@@ -16,6 +16,27 @@ export type Database = {
   };
   cruxenio: {
     Tables: {
+      move_votes: {
+        Row: {
+          id: string;
+          move_id: string;
+          value: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          move_id: string;
+          value: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          move_id?: string;
+          value?: number;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
       waitlist_signups: {
         Row: {
           id: string;
