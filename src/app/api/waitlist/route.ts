@@ -24,7 +24,8 @@ export async function POST(request: Request) {
     };
 
     const { error } = await supabase
-      .from('cruxenio.waitlist_signups')
+      .schema('cruxenio')
+      .from('waitlist_signups')
       .insert(payload);
 
     if (error && error.code === '23505') {
