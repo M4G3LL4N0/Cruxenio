@@ -16,7 +16,7 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-[#0a0e1a] to-[#07090d]">
+      <body>
         {children}
       </body>
     </html>
