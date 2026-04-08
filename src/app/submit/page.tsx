@@ -41,7 +41,7 @@ export default function SubmitPage() {
       }
       setDone(true);
     } catch (err) {
-      setError(err.message || 'Submission failed');
+      setError(err instanceof Error ? err.message : 'Submission failed');
     } finally {
       setLoading(false);
     }
