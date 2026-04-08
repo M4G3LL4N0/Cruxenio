@@ -6,15 +6,21 @@
 - Environments: .env.local
 
   Creating an optimized production build ...
-✓ Compiled successfully in 3.8s
+✓ Compiled successfully in 4.2s
   Running TypeScript ...
-  Finished TypeScript in 2.2s ...
+  Finished TypeScript in 2.3s ...
   Collecting page data using 7 workers ...
-  Generating static pages using 7 workers (0/8) ...
-  Generating static pages using 7 workers (2/8) 
-  Generating static pages using 7 workers (4/8) 
-  Generating static pages using 7 workers (6/8) 
-✓ Generating static pages using 7 workers (8/8) in 474ms
+  Generating static pages using 7 workers (0/9) ...
+  Generating static pages using 7 workers (2/9) 
+  Generating static pages using 7 workers (4/9) 
+  Generating static pages using 7 workers (6/9) 
+{
+  code: '42501',
+  details: null,
+  hint: null,
+  message: 'permission denied for schema cruxenio'
+}
+✓ Generating static pages using 7 workers (9/9) in 798ms
   Finalizing page optimization ...
 
 Route (app)           Revalidate  Expire
@@ -23,8 +29,8 @@ Route (app)           Revalidate  Expire
 ├ ○ /admin                    1h      1y
 ├ ƒ /api/submit-move
 ├ ƒ /api/waitlist
-├ ƒ /moves
-├ ƒ /moves/[slug]
+├ ○ /moves                    1h      1y
+├ ○ /moves/[slug]
 └ ○ /submit                   1h      1y
 
 
