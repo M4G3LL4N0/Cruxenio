@@ -22,7 +22,8 @@ export default async function Admin() {
     .schema('cruxenio')
     .from('moves')
     .select('*')
-    .eq('status', 'draft');
+    .eq('status', 'draft')
+    .returns<MoveRow[]>();
 
   return (
     <main className="p-10 text-white">
