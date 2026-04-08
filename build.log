@@ -3,23 +3,18 @@
 > next build
 
 ▲ Next.js 16.2.1 (Turbopack)
+- Environments: .env.local
 
   Creating an optimized production build ...
-✓ Compiled successfully in 1919ms
+✓ Compiled successfully in 2.3s
   Running TypeScript ...
-  Finished TypeScript in 1273ms ...
+  Finished TypeScript in 1609ms ...
   Collecting page data using 7 workers ...
   Generating static pages using 7 workers (0/8) ...
   Generating static pages using 7 workers (2/8) 
-Failed to initialize Supabase client: Error: supabaseUrl is required.
-    at <unknown> (.next/server/chunks/ssr/src_lib_supabase_server_ts_09lrpry._.js:37:43441)
-    at new cu (.next/server/chunks/ssr/src_lib_supabase_server_ts_09lrpry._.js:37:43692)
-    at <unknown> (.next/server/chunks/ssr/src_lib_supabase_server_ts_09lrpry._.js:37:48122)
-    at e (.next/server/chunks/ssr/[root-of-the-server]__05qdh2g._.js:1:2333)
-    at stringify (<anonymous>)
   Generating static pages using 7 workers (4/8) 
   Generating static pages using 7 workers (6/8) 
-✓ Generating static pages using 7 workers (8/8) in 109ms
+✓ Generating static pages using 7 workers (8/8) in 689ms
   Finalizing page optimization ...
 
 Route (app)

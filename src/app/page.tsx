@@ -11,45 +11,36 @@ const featuredMoves = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen text-white">
-      <section className="relative overflow-hidden border-b border-white/10 section-glow">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,126,95,0.1),transparent_50%)]" />
-        <div className="mx-auto flex max-w-6xl flex-col gap-14 px-6 py-24">
-          <div className="max-w-4xl">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/50">
-              Cruxenio
-            </p>
-            <h1 className="max-w-4xl text-5xl font-semibold tracking-tight sm:text-7xl">
-              Master the <span className="gradient-text">art of movement</span> in life
+    <main>
+      <section className="section">
+        <div className="shell hero-grid">
+          <div className="hero-copy">
+            <div className="eyebrow">Behavior intelligence platform</div>
+
+            <h1 className="hero-title">
+              Master the <span className="accent">art of movement</span> in life
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+
+            <p className="hero-subtitle">
               Cruxenio is a behavior intelligence platform for real-world life moves:
               communication, presence, confidence, social flow, awareness, and everyday situations.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/moves"
-                className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-[#ff7e5f] to-[#feb47b] px-5 py-3 text-sm font-semibold text-black transition-all hover-glow"
-              >
+            <div className="hero-actions">
+              <Link href="/moves" className="btn-primary">
                 Explore moves
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight size={18} />
               </Link>
-              <a
-                href="#waitlist"
-                className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
+
+              <a href="#waitlist" className="btn-secondary">
                 Join waitlist
               </a>
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-4">
+          <div className="hero-strip">
             {featuredMoves.map((item) => (
-              <div
-                key={item}
-                className="glass rounded-3xl p-5 text-sm text-white/80 transition hover:bg-white/[0.05]"
-              >
+              <div key={item} className="hero-pill">
                 {item}
               </div>
             ))}
@@ -57,58 +48,64 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
-            <Waypoints className="h-5 w-5 text-white/80" />
-            <h2 className="mt-4 text-xl font-semibold">Moves</h2>
-            <p className="mt-2 text-sm leading-7 text-white/65">
+      <section className="section-tight">
+        <div className="shell cards-grid">
+          <div className="card">
+            <div className="card-icon">
+              <Waypoints size={18} />
+            </div>
+            <h2>Moves</h2>
+            <p>
               Structured real-world behaviors you can use immediately.
             </p>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
-            <Brain className="h-5 w-5 text-white/80" />
-            <h2 className="mt-4 text-xl font-semibold">Why it works</h2>
-            <p className="mt-2 text-sm leading-7 text-white/65">
+          <div className="card">
+            <div className="card-icon">
+              <Brain size={18} />
+            </div>
+            <h2>Why it works</h2>
+            <p>
               Every move includes the underlying psychology, not just the tactic.
             </p>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
-            <PersonStanding className="h-5 w-5 text-white/80" />
-            <h2 className="mt-4 text-xl font-semibold">Real-life situations</h2>
-            <p className="mt-2 text-sm leading-7 text-white/65">
+          <div className="card">
+            <div className="card-icon">
+              <PersonStanding size={18} />
+            </div>
+            <h2>Real-life situations</h2>
+            <p>
               Dating, networking, conflict, confidence, first impressions, and more.
             </p>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
-            <Sparkles className="h-5 w-5 text-white/80" />
-            <h2 className="mt-4 text-xl font-semibold">Compounding improvement</h2>
-            <p className="mt-2 text-sm leading-7 text-white/65">
+          <div className="card">
+            <div className="card-icon">
+              <Sparkles size={18} />
+            </div>
+            <h2>Compounding improvement</h2>
+            <p>
               Small behavioral upgrades that stack into a smoother, stronger life.
             </p>
           </div>
         </div>
       </section>
 
-      <section id="waitlist" className="mx-auto max-w-6xl px-6 pb-24">
-        <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 sm:p-10">
-          <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">
-                Early access
-              </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
-                Get access before public launch.
-              </h2>
-              <p className="mt-4 max-w-2xl text-white/65">
-                Join the list for early access, product updates, and the first release of Cruxenio moves.
-              </p>
-            </div>
+      <section id="waitlist" className="section-tight">
+        <div className="shell">
+          <div className="panel waitlist-panel">
+            <div className="waitlist-grid">
+              <div>
+                <div className="eyebrow">Early access</div>
+                <h2 className="section-title">Get access before public launch.</h2>
+                <p className="section-copy">
+                  Join the list for early access, product updates, and the first release of Cruxenio moves.
+                </p>
+              </div>
 
-            <WaitlistForm />
+              <WaitlistForm />
+            </div>
           </div>
         </div>
       </section>

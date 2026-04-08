@@ -37,35 +37,39 @@ export function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex w-full flex-col gap-3 sm:flex-row">
+    <form onSubmit={onSubmit} className="waitlist-form">
       <input
         type="text"
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="glass h-12 rounded-2xl px-4 text-sm text-white placeholder:text-white/40 outline-none transition focus:ring-2 focus:ring-[#ff7e5f]"
+        className="field"
       />
+
       <input
         type="email"
         placeholder="Email"
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="glass h-12 flex-1 rounded-2xl px-4 text-sm text-white placeholder:text-white/40 outline-none transition focus:ring-2 focus:ring-[#ff7e5f]"
+        className="field"
       />
+
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="h-12 rounded-2xl bg-gradient-to-r from-[#ff7e5f] to-[#feb47b] px-5 text-sm font-semibold text-black transition-all hover-glow disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-white"
+        className="btn-primary"
       >
         {status === 'loading' ? 'Joining...' : 'Join waitlist'}
       </button>
 
-      {message ? (
-        <p className={`text-sm sm:basis-full ${status === 'success' ? 'text-green-400' : 'text-red-400'}`}>
-          {message}
-        </p>
-      ) : null}
+      <div
+        className={`waitlist-note ${
+          status === 'success' ? 'success' : status === 'error' ? 'error' : ''
+        }`}
+      >
+        {message}
+      </div>
     </form>
   );
 }

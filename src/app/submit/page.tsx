@@ -15,90 +15,87 @@ export default function SubmitPage() {
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
 
-  const [error, setError] = useState('');
-
   async function submit() {
-    if (!form.title.trim() || !form.summary.trim()) {
-      setError('Title and summary are required');
-      return;
-    }
-
-    setError('');
     setLoading(true);
 
-    try {
-      const res = await fetch('/api/submit-move', {
-        method: 'POST',
-        body: JSON.stringify({
-          ...form,
-          action_steps: form.action_steps.split('\n'),
-          tags: form.tags.split(',').map(t => t.trim()).filter(t => t)
-        })
-      });
+    const response = await fetch('/api/submit-move', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...form,
+        action_steps: form.action_steps
+          .split('\n')
+          .map((step) => step.trim())
+          .filter(Boolean),
+        tags: form.tags
+          .split(',')
+          .map((tag) => tag.trim())
+          .filter(Boolean)
+      })
+    });
 
-      if (!res.ok) {
-        throw new Error(await res.text());
-      }
+    setLoading(false);
+
+    if (response.ok) {
       setDone(true);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Submission failed');
-    } finally {
-      setLoading(false);
     }
   }
 
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-16 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-semibold mb-6">Submit a Move</h1>
+    <main className="submit-shell">
+      <div className="eyebrow">Cruxenio</div>
+      <h1 className="page-title">Submit a move</h1>
+      <p className="page-subtitle">
+        Add a real-world behavior that actually works.
+      </p>
 
-      {done ? (
-        <div className="border border-green-500 bg-green-500/10 p-4 rounded">
-          <h3 className="font-medium text-green-400">Submitted for review!</h3>
-          <p className="mt-1 text-green-400/80">
-            Your move will appear publicly after moderator approval.
-          </p>
-        </div>
-      ) : (
-        <div className="space-y-4">
+      <div className="panel form-panel" style={{ marginTop: '28px' }}>
+        {done ? (
+          <div className="waitlist-note success">Submitted. Awaiting approval.</div>
+        ) : (
+          <div className="form-grid">
+            <input
+              placeholder="Title"
+              className="field"
+              onChange={(e) => setForm({ ...form, title: e.target.value })}
+            />
 
-          <input placeholder="Title"
-            className="w-full p-3 bg-neutral-900 rounded"
-            onChange={e => setForm({...form, title: e.target.value})}
-          />
+            <textarea
+              placeholder="Summary"
+              className="textarea"
+              onChange={(e) => setForm({ ...form, summary: e.target.value })}
+            />
 
-          <textarea placeholder="Summary"
-            className="w-full p-3 bg-neutral-900 rounded"
-            onChange={e => setForm({...form, summary: e.target.value})}
-          />
+            <textarea
+              placeholder="Situation"
+              className="textarea"
+              onChange={(e) => setForm({ ...form, situation: e.target.value })}
+            />
 
-          <textarea placeholder="Situation"
-            className="w-full p-3 bg-neutral-900 rounded"
-            onChange={e => setForm({...form, situation: e.target.value})}
-          />
+            <textarea
+              placeholder="Action steps (one per line)"
+              className="textarea"
+              onChange={(e) => setForm({ ...form, action_steps: e.target.value })}
+            />
 
-          <textarea placeholder="Action steps (one per line)"
-            className="w-full p-3 bg-neutral-900 rounded"
-            onChange={e => setForm({...form, action_steps: e.target.value})}
-          />
+            <textarea
+              placeholder="Why it works"
+              className="textarea"
+              onChange={(e) => setForm({ ...form, why_it_works: e.target.value })}
+            />
 
-          <textarea placeholder="Why it works"
-            className="w-full p-3 bg-neutral-900 rounded"
-            onChange={e => setForm({...form, why_it_works: e.target.value})}
-          />
+            <input
+              placeholder="Tags (comma separated)"
+              className="field"
+              onChange={(e) => setForm({ ...form, tags: e.target.value })}
+            />
 
-          <input placeholder="Tags (comma separated)"
-            className="w-full p-3 bg-neutral-900 rounded"
-            onChange={e => setForm({...form, tags: e.target.value})}
-          />
-
-          <button
-            onClick={submit}
-            className="bg-white text-black px-4 py-2 rounded"
-          >
-            {loading ? 'Submitting...' : 'Submit'}
-          </button>
-        </div>
-      )}
+            <button onClick={submit} className="btn-primary">
+              {loading ? 'Submitting...' : 'Submit move'}
+            </button>
+          </div>
+        )}
+      </div>
     </main>
   );
 }
