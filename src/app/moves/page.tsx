@@ -1,7 +1,8 @@
 import { MoveCard } from '@/components/move-card';
 import { getPublishedMoves, type MoveRow } from '@/lib/moves';
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-static';
+export const revalidate = 3600;
 
 export default async function MovesPage() {
   const moves = await getPublishedMoves();
