@@ -6,15 +6,15 @@
 - Environments: .env.local
 
   Creating an optimized production build ...
-✓ Compiled successfully in 3.7s
+✓ Compiled successfully in 3.8s
   Running TypeScript ...
-  Finished TypeScript in 3.0s ...
+  Finished TypeScript in 2.2s ...
   Collecting page data using 7 workers ...
   Generating static pages using 7 workers (0/8) ...
   Generating static pages using 7 workers (2/8) 
   Generating static pages using 7 workers (4/8) 
   Generating static pages using 7 workers (6/8) 
-✓ Generating static pages using 7 workers (8/8) in 898ms
+✓ Generating static pages using 7 workers (8/8) in 474ms
   Finalizing page optimization ...
 
 Route (app)           Revalidate  Expire
@@ -24,7 +24,7 @@ Route (app)           Revalidate  Expire
 ├ ƒ /api/submit-move
 ├ ƒ /api/waitlist
 ├ ƒ /moves
-├ ○ /moves/[slug]
+├ ƒ /moves/[slug]
 └ ○ /submit                   1h      1y
 
 
