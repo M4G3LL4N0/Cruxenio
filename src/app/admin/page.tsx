@@ -1,6 +1,7 @@
 import { createServerSupabaseClient } from '@/lib/supabase/server';
 import { MoveRow } from '@/lib/moves';
 import { redirect } from 'next/navigation';
+import { SubmitButton } from '@/components/ui/submit-button';
 
 export default async function Admin() {
   let supabase;
@@ -42,12 +43,12 @@ export default async function Admin() {
             </div>
             <form action={`/api/approve-move`} method="POST">
               <input type="hidden" name="id" value={m.id} />
-              <button
-                type="submit"
+              <SubmitButton
                 className="bg-white text-black px-3 py-1 text-sm rounded hover:bg-white/90"
+                pendingText="Approving..."
               >
                 Approve
-              </button>
+              </SubmitButton>
             </form>
           </div>
         </div>
