@@ -20,17 +20,45 @@ export default function HomePage() {
 
         <div className="mt-10 flex flex-wrap gap-4">
           <a
-            href="#platform"
+            href="/submit"
             className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
           >
-            Explore Platform
+            Submit Your Move
           </a>
           <a
-            href="#capabilities"
+            href="/moves"
             className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           >
-            View Capabilities
+            Explore Moves
           </a>
+        </div>
+
+        <div className="mt-12 max-w-xl">
+          <h3 className="text-lg font-semibold tracking-[-0.02em]">
+            Join the Waitlist
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-white/70">
+            Be the first to access premium strategic intelligence tools and insights.
+          </p>
+          <form 
+            action="/api/waitlist" 
+            method="POST"
+            className="mt-4 flex gap-3"
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Enter your email"
+              className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder-white/40 outline-none focus:border-white/20"
+            />
+            <button
+              type="submit"
+              className="rounded-xl bg-white px-6 py-2.5 text-sm font-semibold text-black transition hover:opacity-90"
+            >
+              Join
+            </button>
+          </form>
         </div>
 
         <div
