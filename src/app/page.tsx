@@ -3,7 +3,7 @@ export const revalidate = 0;
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#0a0a0f] text-white">
+    <main className="relative z-10">
       <section className="mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-24">
         <div className="inline-flex w-fit items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.22em] text-white/70">
           Cruxenio
