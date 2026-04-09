@@ -1,114 +1,79 @@
-import Link from 'next/link';
-import { ArrowRight, Sparkles, Waypoints, Brain, PersonStanding } from 'lucide-react';
-import { WaitlistForm } from '@/components/waitlist-form';
-
-const featuredMoves = [
-  'How to enter a room calmly and confidently',
-  'How to keep a conversation flowing without trying too hard',
-  'How to stay composed under pressure',
-  'How to make a better first impression in 10 seconds'
-];
-
-export const dynamic = 'force-static';
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default function HomePage() {
   return (
-    <main>
-      <section className="section">
-        <div className="shell hero-grid">
-          <div className="hero-copy">
-            <div className="eyebrow">Behavior intelligence platform</div>
-
-            <h1 className="hero-title">
-              Master the <span className="accent">art of movement</span> in life
-            </h1>
-
-            <p className="hero-subtitle">
-              Cruxenio is a behavior intelligence platform for real-world life moves:
-              communication, presence, confidence, social flow, awareness, and everyday situations.
-            </p>
-
-            <div className="hero-actions">
-              <Link href="/moves" className="btn-primary">
-                Explore moves
-                <ArrowRight size={18} />
-              </Link>
-
-              <a href="#waitlist" className="btn-secondary">
-                Join waitlist
-              </a>
-            </div>
-          </div>
-
-          <div className="hero-strip">
-            {featuredMoves.map((item) => (
-              <div key={item} className="hero-pill">
-                {item}
-              </div>
-            ))}
-          </div>
+    <main className="min-h-screen bg-[#0a0a0f] text-white">
+      <section className="mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-24">
+        <div className="inline-flex w-fit items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.22em] text-white/70">
+          Cruxenio
         </div>
-      </section>
 
-      <section className="section-tight">
-        <div className="shell cards-grid">
-          <div className="card">
-            <div className="card-icon">
-              <Waypoints size={18} />
-            </div>
-            <h2>Moves</h2>
-            <p>
-              Structured real-world behaviors you can use immediately.
-            </p>
-          </div>
+        <h1 className="mt-8 max-w-5xl text-5xl font-semibold tracking-[-0.05em] text-white sm:text-7xl">
+          Premium strategic intelligence for high-conviction decision making.
+        </h1>
 
-          <div className="card">
-            <div className="card-icon">
-              <Brain size={18} />
-            </div>
-            <h2>Why it works</h2>
-            <p>
-              Every move includes the underlying psychology, not just the tactic.
-            </p>
-          </div>
+        <p className="mt-6 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
+          Cruxenio helps teams organize signal, surface leverage, and move with
+          more clarity across strategy, operations, and growth.
+        </p>
 
-          <div className="card">
-            <div className="card-icon">
-              <PersonStanding size={18} />
-            </div>
-            <h2>Real-life situations</h2>
-            <p>
-              Dating, networking, conflict, confidence, first impressions, and more.
-            </p>
-          </div>
-
-          <div className="card">
-            <div className="card-icon">
-              <Sparkles size={18} />
-            </div>
-            <h2>Compounding improvement</h2>
-            <p>
-              Small behavioral upgrades that stack into a smoother, stronger life.
-            </p>
-          </div>
+        <div className="mt-10 flex flex-wrap gap-4">
+          <a
+            href="#platform"
+            className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
+          >
+            Explore Platform
+          </a>
+          <a
+            href="#capabilities"
+            className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            View Capabilities
+          </a>
         </div>
-      </section>
 
-      <section id="waitlist" className="section-tight">
-        <div className="shell">
-          <div className="panel waitlist-panel">
-            <div className="waitlist-grid">
-              <div>
-                <div className="eyebrow">Early access</div>
-                <h2 className="section-title">Get access before public launch.</h2>
-                <p className="section-copy">
-                  Join the list for early access, product updates, and the first release of Cruxenio moves.
-                </p>
-              </div>
-
-              <WaitlistForm />
+        <div
+          id="capabilities"
+          className="mt-20 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {[
+            {
+              title: "Signal Mapping",
+              text: "Track the highest-value signals across products, teams, and markets.",
+            },
+            {
+              title: "Decision Support",
+              text: "Turn fragmented inputs into structured executive-grade clarity.",
+            },
+            {
+              title: "Operational Visibility",
+              text: "Create tighter loops between strategy, execution, and feedback.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+            >
+              <h2 className="text-xl font-semibold tracking-[-0.02em]">
+                {item.title}
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-white/70">{item.text}</p>
             </div>
+          ))}
+        </div>
+
+        <div
+          id="platform"
+          className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-8"
+        >
+          <div className="max-w-3xl">
+            <h3 className="text-2xl font-semibold tracking-[-0.03em]">
+              Build-safe premium landing state
+            </h3>
+            <p className="mt-4 text-sm leading-7 text-white/70">
+              This landing state intentionally avoids database reads during build.
+            </p>
           </div>
         </div>
       </section>
