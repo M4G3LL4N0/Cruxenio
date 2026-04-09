@@ -19,18 +19,35 @@ export default function HomePage() {
         </p>
 
         <div className="mt-10 flex flex-wrap gap-4">
-          <a
-            href="/submit"
-            className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
-          >
-            Submit Your Move
-          </a>
-          <a
-            href="/moves"
-            className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-          >
-            Explore Moves
-          </a>
+          {session ? (
+            <>
+              <a
+                href="/submit"
+                className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
+              >
+                Submit Your Move
+              </a>
+              <a
+                href="/moves"
+                className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Explore Moves
+              </a>
+              <a
+                href="/dashboard"
+                className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Dashboard
+              </a>
+            </>
+          ) : (
+            <a
+              href="/login"
+              className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
+            >
+              Get Started
+            </a>
+          )}
         </div>
 
         <div className="mt-12 max-w-xl">

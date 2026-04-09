@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
+import { cookies } from "next/headers";
 import "./globals.css";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -16,11 +18,15 @@ export const viewport: Viewport = {
   themeColor: "#06070b",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const supabase = createServerComponentClient({ cookies });
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
   return (
     <html lang="en" className="bg-[#06070b] text-white">
       <body className="min-h-screen antialiased">
