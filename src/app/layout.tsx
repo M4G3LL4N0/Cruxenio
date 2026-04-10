@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { cookies } from "next/headers";
 import "./globals.css";
-import { createServerClient } from "@/lib/supabase/server";
 import { ReactNode } from "react";
 
 export const dynamic = "force-dynamic";
@@ -24,10 +22,6 @@ interface RootLayoutProps {
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const supabase = createServerClient();
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
   return (
     <html lang="en" className="bg-[#06070b] text-white">
       <body className="min-h-screen antialiased">
