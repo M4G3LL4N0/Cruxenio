@@ -1,16 +1,14 @@
-import React from 'react';
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Inter } from 'next/font/google'
 import type { ReactNode } from 'react'
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
 export const metadata: Metadata = {
   title: "Cruxenio",
   description: "Premium strategic intelligence for high-conviction decision making.",
-  metadataBase: new URL("https://cruxenio.com"),
+  metadataBase: process.env.NODE_ENV === 'production' 
+    ? new URL("https://cruxenio.com")
+    : new URL("http://localhost:3000"),
 };
 
 export const viewport: Viewport = {
@@ -23,10 +21,10 @@ type RootLayoutProps = {
   children: ReactNode;
 }
 
-const inter = Inter({
+const inter = Inter({ 
   subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter'
+  variable: '--font-inter',
+  adjustFontFallback: false
 })
 
 export default async function RootLayout({ children }: RootLayoutProps) {
