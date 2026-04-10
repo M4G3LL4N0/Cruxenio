@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { ReactNode } from "react";
 import { Inter } from 'next/font/google'
 import type { ReactNode } from 'react'
 
@@ -19,7 +18,7 @@ export const viewport: Viewport = {
   themeColor: "#06070b",
 };
 
-interface RootLayoutProps {
+type RootLayoutProps = {
   children: ReactNode;
 }
 
