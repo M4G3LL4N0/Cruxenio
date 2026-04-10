@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { cookies } from "next/headers";
 import "./globals.css";
 import { createServerClient } from "@/lib/supabase/server";
+import { ReactNode } from "react";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -18,11 +19,11 @@ export const viewport: Viewport = {
   themeColor: "#06070b",
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+export default async function RootLayout({ children }: RootLayoutProps) {
   const supabase = createServerClient();
   const {
     data: { session },
