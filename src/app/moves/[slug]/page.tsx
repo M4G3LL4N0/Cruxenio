@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
-import { getMoveBySlug } from '@/lib/moves';
+import { getMoveBySlug, getPublishedMoves } from '@/lib/moves';
 import { Suspense } from 'react';
 import { MoveDetailSkeleton } from '@/components/move-detail-skeleton';
+import { PracticeMove } from '@/components/moves/practice';
 
 export const dynamic = 'force-static';
 export const revalidate = 3600;
@@ -22,6 +23,10 @@ export default async function MoveDetailPage({ params }: PageProps) {
     console.error('Failed to load move:', error);
     notFound();
   }
+
+  const published = await getPublishedMoves();
+  const index = published.findIndex((item) => item.slug === move.slug);
+  const nextMove = published[(index + 1) % published.length] ?? move;
 
   return (
     <Suspense fallback={<MoveDetailSkeleton />}>
@@ -66,6 +71,8 @@ export default async function MoveDetailPage({ params }: PageProps) {
                 <p>{move.when_not_to_use}</p>
               </section>
             ) : null}
+
+            <PracticeMove steps={move.action_steps} nextHref={`/moves/${nextMove.slug}`} nextTitle={nextMove.title} />
           </div>
         </div>
       </section>

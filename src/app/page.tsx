@@ -1,5 +1,3 @@
-import { cookies } from 'next/headers';
-
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
@@ -12,44 +10,26 @@ export default function HomePage() {
         </div>
 
         <h1 className="mt-8 max-w-5xl text-5xl font-semibold tracking-[-0.05em] text-white sm:text-7xl">
-          Premium strategic intelligence for high-conviction decision making.
+          Practice the move before the moment.
         </h1>
 
         <p className="mt-6 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
-          Cruxenio helps teams organize signal, surface leverage, and move with
-          more clarity across strategy, operations, and growth.
+          Pick a real situation, walk the move one step at a time, and see why it works before you need it.
         </p>
 
         <div className="mt-10 flex flex-wrap gap-4">
-          {session ? (
-            <>
-              <a
-                href="/submit"
-                className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
-              >
-                Submit Your Move
-              </a>
-              <a
-                href="/moves"
-                className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                Explore Moves
-              </a>
-              <a
-                href="/dashboard"
-                className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                Dashboard
-              </a>
-            </>
-          ) : (
-            <a
-              href="/login"
-              className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
-            >
-              Get Started
-            </a>
-          )}
+          <a
+            href="/moves"
+            className="rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
+          >
+            Choose a situation
+          </a>
+          <a
+            href="/submit"
+            className="rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+          >
+            Submit a move
+          </a>
         </div>
 
         <div className="mt-12 max-w-xl">
@@ -57,7 +37,7 @@ export default function HomePage() {
             Join the Waitlist
           </h3>
           <p className="mt-2 text-sm leading-6 text-white/70">
-            Be the first to access premium strategic intelligence tools and insights.
+            New situations land here first.
           </p>
           <form 
             action="/api/waitlist" 
@@ -86,16 +66,16 @@ export default function HomePage() {
         >
           {[
             {
-              title: "Signal Mapping",
-              text: "Track the highest-value signals across products, teams, and markets.",
+              title: "Choose the situation",
+              text: "Start from a conversation, a room, or a moment you already recognize.",
             },
             {
-              title: "Decision Support",
-              text: "Turn fragmented inputs into structured executive-grade clarity.",
+              title: "Walk the move",
+              text: "Practice the steps in order, then read why the move works.",
             },
             {
-              title: "Operational Visibility",
-              text: "Create tighter loops between strategy, execution, and feedback.",
+              title: "Take the next one",
+              text: "A finished move opens the next situation instead of dumping you back at the start.",
             },
           ].map((item) => (
             <div
@@ -116,10 +96,10 @@ export default function HomePage() {
         >
           <div className="max-w-3xl">
             <h3 className="text-2xl font-semibold tracking-[-0.03em]">
-              Build-safe premium landing state
+              A move you can rehearse
             </h3>
             <p className="mt-4 text-sm leading-7 text-white/70">
-              This landing state intentionally avoids database reads during build.
+              Published moves are ready to practice. When a studio library is connected, those moves replace the starter set.
             </p>
           </div>
         </div>
